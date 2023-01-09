@@ -238,12 +238,12 @@ body {
   animation: open-rev 2s;
 }
 
-.container:hover .lid {
+.container:focus .lid {
   animation: open 0.5s;
   animation-fill-mode: forwards;
 }
 
-.container:hover .card {
+.container:focus .card {
   animation: slide 0.2s;
   animation-delay: 0.5s;
   animation-fill-mode: forwards;
