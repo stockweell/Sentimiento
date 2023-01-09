@@ -1,286 +1,197 @@
-@import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
-
 * {
-  margin: 0;
   padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
-
+html, body {
+  height: 100%;
+}
 body {
-  height: 100vh;
-  width: 100vw;
-  background: #FFE3EC;
-  font-family: 'Pangolin', cursive;
-  font-size: 1vmin;
+  width: 100%;
+  background-color: #000;
+  font-size: 20px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
-
-.container {
-  position: relative;
-  top: 0vmin;
+@media (max-height: 500px) {
+  body {
+    margin: 25% 0 25% 0;
+ }
 }
-
-.envelope {
-  position: relative;
-  background: #eb7885;
-  height: 30vmin;
-  width: 48vmin;
-}
-
-.card {
+.envelop {
+  width: 15rem;
+  height: 10rem;
   position: absolute;
-  background: white;
-  height: 25vmin;
-  width: 43vmin;
-  
+  margin: auto;
+  left: 0;
+  right: 0;
+}
+@media (min-width: 400px) and (max-width: 600px) {
+  .envelop {
+    width: 20rem;
+    height: 15rem;
+ }
+}
+@media (min-width: 600px) {
+  .envelop {
+    width: 25rem;
+    height: 20rem;
+ }
+}
+@media (min-width: 600px) and (min-height: 600px) {
+  .envelop {
+    bottom: 20%;
+ }
+}
+.envelop__front-paper {
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  border-radius: 0.7rem;
+  border: 0.35rem solid #967b5c;
+  background-color: #ba9872;
+  clip-path: polygon(100% 0%, 50% 70%, 0% 0%, 0% 100%, 100% 100%);
+  z-index: 300;
+}
+.envelop__back-paper {
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  border-radius: 0.7rem;
+  background-color: #967b5c;
+  clip-path: polygon(0% 0%, 100% 0%, 90% 100%, 0% 90%);
+  z-index: 100;
+}
+.envelop__up-paper {
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  position: relative;
+  border-radius: 0.7rem;
+  background-color: #967b5c;
+  z-index: 400;
+  clip-path: polygon(0% 0%, 100% 0%, 50% 81%);
+}
+.envelop__sticker {
+  width: 100%;
+  height: 20%;
+  position: absolute;
+  margin: auto;
+  top: 30%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 400;
+  background-image: url("https://www.freepnglogos.com/uploads/heart-png/emoji-heart-33.png");
+  background-color: #f9f9f9;
+  border: 0.3rem solid #e2e2e2;
+  background-size: 2rem;
+  background-position: center;
+}
+@media (max-width: 400px) {
+  .envelop__sticker {
+    background-size: 1.2rem;
+ }
+}
+@media (min-width: 600px) {
+  .envelop__sticker {
+    height: 15%;
+ }
+}
+.envelop__false-sticker {
+  width: 20%;
+  height: 20%;
+  position: absolute;
+  margin: auto;
+  top: 30%;
+  left: 80%;
+  bottom: 0;
+  right: 0;
+  z-index: 300;
+  background-image: url("https://www.freepnglogos.com/uploads/heart-png/emoji-heart-33.png");
+  background-color: #f9f9f9;
+  border: 0.3rem solid #e2e2e2;
+  background-size: 2rem;
+  background-position: center;
+}
+@media (max-width: 400px) {
+  .envelop__false-sticker {
+    background-size: 1.2rem;
+ }
+}
+@media (min-width: 600px) {
+  .envelop__false-sticker {
+    height: 15%;
+ }
+}
+.envelop__content {
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  z-index: 200;
+}
+.love-notes {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  left: 2.5vmin;
-  top: 0vmin;
-  
-  animation: slide-rev 0.2s ease-out;
 }
-
-.message {
+.note {
+  width: 95%;
+  height: 30%;
+  background-color: #f9f9f9;
   position: absolute;
-  top: 5vmin;
+  overflow: hidden;
+  transition: height 0.5s, opacity 0.25s;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
 }
-
-.pikachu {
-  position: absolute;
-  background: #f9ebaa;
-  height: 8vmin;
-  width: 10vmin;
-  border-radius: 40%;
-  top: 15vmin;
-  display: flex;
+.note:nth-child(1) {
+  bottom: 60%;
 }
-.pikachu::before {
-  content: '';
-  position: absolute;
-  background: #f9ebaa;
-  height: 6vmin;
-  width: 9vmin;
-  border-radius: 90% 90% 60% 60%;
-  top: -4vmin;
-  left: 0.5vmin;
+.note:nth-child(2) {
+  bottom: 40%;
 }
-.pikachu::after {
-  content: '';
-  position: absolute;
-  background: transparent;
-  height: 1vmin;
-  width: 1vmin;
-  top: 2vmin;
-  left: -1.5vmin;
-  color: #4a4947;
-  border-radius: 50%;
-  box-shadow:
-    4vmin -3.5vmin, 8vmin -3.5vmin,
-    2vmin -2vmin #fad598, 10vmin -2vmin #fad598,
-    3vmin 5vmin #f9ebaa, 9.3vmin 5vmin #f9ebaa;
+.note:nth-child(3) {
+  bottom: 20%;
 }
-
-.smile {
-  position: relative;
-  background: transparent;
-  height: 1vmin;
-  width: 1vmin;
-  border-radius: 50%;
-  border-bottom: 0.3vmin solid #4a4947;
-  left: -5vmin;
-  top: -1.3vmin;
+.note:hover {
+  cursor: pointer;
+  height: 45%;
 }
-
-.smile::before {
-  position: absolute;
-  content: '';
-  background: transparent;
-  height: 1vmin;
-  width: 1vmin;
-  border-radius: 50%;
-  border-bottom: 0.3vmin solid #4a4947;
-  left: 0.7vmin;
+.note__text {
+  font-family: "Sofia";
+  padding: 1rem;
 }
-
-.limbs {
-  position: relative;
-  width: 0; 
-  height: 0; 
-  border-left: 1vmin solid transparent;
-  border-right: 1vmin solid transparent;  
-  border-bottom: 6vmin solid #f9ebaa;
-  border-radius: 80%;
-  top: -6vmin;
-  left: 1vmin;
-  transform: rotate(-20deg);
+.note__text p {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  text-align: center;
 }
-
-.limbs::before {
-  content: '';
-  position: absolute;
-  background: #f9ebaa;
-  width: 5vmin;
-  height: 2vmin;
-  border-radius: 40%;
-  top: 10vmin;
-  left: 4vmin;
-  box-shadow: 
-    -1vmin 1.5vmin #f9ebaa;
+@media (min-width: 300px) and (max-width: 600px) {
+  .note__text p {
+    font-size: 1.025rem;
+ }
 }
-
-.limbs::after {
-  content: '';
-  position: absolute;
-  width: 0; 
-  height: 0; 
-  border-left: 1vmin solid transparent;
-  border-right: 1vmin solid transparent;  
-  border-bottom: 6vmin solid #f9ebaa;
-  border-radius: 80%;
-  top: 3vmin;
-  left: 5vmin;
-  transform: rotate(40deg);
+@media (min-width: 600px) {
+  .note__text p {
+    font-size: 1.15rem;
+ }
 }
-
-.heart {
-  position: relative;
-  width: 5vmin;
-  height: 4vmin;
-  top: 2vmin;
-  left: 0.6vmin;
+.scissors {
+  cursor: url("https://i.postimg.cc/GtLCdKxR/sisors.png"), pointer;
 }
-.heart:before,
-.heart:after {
-  position: absolute;
-  content: "";
-  left: 2.5vmin;
-  top: 0;
-  width: 2.5vmin;
-  height: 4vmin;
-  background: #fc978b;
-  border-radius: 2.5vmin 2.5vmin 0 0;
-  transform: rotate(-45deg);
-  transform-origin: 0 100%;
+.scissors:active {
+  cursor: url("https://i.postimg.cc/GtXQ7WPZ/pngwing-com.png"), pointer;
 }
-.heart:after {
-  left: 0;
-  transform: rotate(45deg);
-  transform-origin: 100% 100%;
-}
-
-.arms {
-  position: relative;
-  background: #f9ebaa;
-  width: 4.2vmin; 
-  height: 2vmin; 
-  border-radius: 60% 60% 90% 60% / 50% 50% 90% 90%;
-  top: 3vmin;
-  left: -5vmin;
-}
-.arms::after {
-  content: '';
-  position: absolute;
-  background: #f9ebaa;
-  width: 4vmin; 
-  height: 2vmin; 
-  border-radius: 60% 60% 90% 60% / 50% 50% 90% 90%;
-  left: 5vmin;
-  top: 0vmin;
-}
-
-.cover {
-  position: absolute;
-  height: 0;
-  width: 0;
-  
-  border-bottom: 15vmin solid #f5b5bb;
-  border-left: 24vmin solid transparent;
-  border-right: 24vmin solid transparent;
-  top: 15vmin;
-  z-index: 3;
-}
-
-.cover::after { /*left triangle*/
-  position: absolute;
-  content: '';
-  border-left: 24.5vmin solid #ffbbc1;
-  border-bottom: 15vmin solid transparent;
-  border-top: 15vmin solid transparent;
-  top: -15vmin;
-  left: -24vmin;
-}
-
-.cover::before {
-  position: absolute;
-  content: '';
-  border-right: 24.5vmin solid #ffbbc1;
-  border-bottom: 15vmin solid transparent;
-  border-top: 15vmin solid transparent;
-  top: -15vmin;
-  left: -0.5vmin;
-}
-
-.lid {
-  position: absolute;
-  height: 0;
-  width: 0;
-  
-  border-top: 15vmin solid #ff8896;
-  border-left: 24vmin solid transparent;
-  border-right: 24vmin solid transparent;
-
-  top: 0;
-  transform-origin: top;
-  animation: open-rev 2s;
-}
-
-.container:focus .lid {
-  animation: open 0.5s;
-  animation-fill-mode: forwards;
-}
-
-.container:focus .card {
-  animation: slide 0.2s;
-  animation-delay: 0.5s;
-  animation-fill-mode: forwards;
-}
-
-.shadow {
-  position: relative;
-  top: 3vmin;
-  border-radius: 50%; 
-  opacity: 0.7;
-  height: 2vmin;
-  width: 48vmin;
-  background: #e8c5d0;
-}
-
-@keyframes open {
-  100% {
-    transform: rotatex(180deg);
-  }
-}
-
-@keyframes slide {
-  100% {
-    transform: translatey(-15vmin);
-    z-index: 2;
-  }
-}
-
-@keyframes open-rev {
-  from {
-    transform: rotatex(-180deg);
-
-  }
-}
-
-@keyframes slide-rev {
-  from {
-    transform: translatey(-15vmin);
-  }
+.cursor {
+  cursor: pointer;
 }
